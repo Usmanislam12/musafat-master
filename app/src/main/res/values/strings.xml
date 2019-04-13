@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">musafat</string>
+    <string name="title_activity_selectpickuploc">Map</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string name="open_navigation">Open Navigation Drawer</string>
+    <string name="close_navigation">Close Navigation Drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

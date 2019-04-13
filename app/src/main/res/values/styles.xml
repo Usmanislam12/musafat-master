@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#3F3C3C</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@android:color/background_dark</item>
+        <item name="drawerArrowStyle">@style/toogleStyle</item>
+        <item name="colorControlNormal">#E4E4EC</item>
+    </style>
+
+    <style name="toogleStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+    <item name="android:color">#E4E4EC</item>
+    <item name="spinBars">true</item>
+
+    </style>
+
+</resources>

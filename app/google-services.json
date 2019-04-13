@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "220847839897",
+    "firebase_url": "https://musafat-36dd1.firebaseio.com",
+    "project_id": "musafat-36dd1",
+    "storage_bucket": "musafat-36dd1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220847839897:android:c7932955fde01c79",
+        "android_client_info": {
+          "package_name": "com.example.musafat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220847839897-j28pp5bg9555o0mump0i137qqithbtpl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musafat",
+            "certificate_hash": "da5ed222839fa28bf1d3579fbd242547afa959f3"
+          }
+        },
+        {
+          "client_id": "220847839897-amh4uc14a2anohqg4ia8q0443fm1g5i1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBp4VjuP_1Z1rG9Dm9l0t68cqtT-ZYadI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220847839897-amh4uc14a2anohqg4ia8q0443fm1g5i1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
