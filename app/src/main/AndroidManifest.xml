@@ -16,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adddriver"></activity>
+        <activity android:name=".driverlogin"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".adddriver" />
         <activity android:name=".driverlist" />
         <activity android:name=".driverdetail" />
         <activity android:name=".Signup" />
@@ -40,7 +42,7 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".splash" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Main2Activity"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

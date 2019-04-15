@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="Add Driver"
+            android:text="SIGNUP"
 
             android:textSize="30sp" />
 
@@ -48,7 +48,40 @@
                 android:maxLines="1"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/background_light">
 
+            <EditText
+                android:id="@+id/driver_email"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="18dp"
+
+                android:hint="Email"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textColorHint="@android:color/background_light"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+
+                android:id="@+id/driver_pass"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="PASSWORD"
+
+                android:inputType="textPassword"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="@android:color/background_dark" />
+        </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,23 +93,6 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
                 android:hint="Contact"
-                android:imeOptions="actionDone"
-                android:inputType="number"
-                android:maxLines="1"
-                android:textSize="18sp" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@android:color/background_light">
-
-            <EditText
-                android:id="@+id/driver_car"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="18dp"
-                android:hint="CarNumber"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLines="1"
@@ -106,6 +122,23 @@
             android:textColorHint="@android:color/background_light">
 
             <EditText
+                android:id="@+id/driver_car"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="18dp"
+                android:hint="CarNumber"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLines="1"
+                android:textSize="18sp" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@android:color/background_light">
+
+            <EditText
                 android:id="@+id/driver_color"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -116,7 +149,7 @@
                 android:maxLines="1"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
-        3
+
 
         <Button
             android:id="@+id/add_book_btn"
@@ -124,7 +157,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/button"
-            android:text="Add Driver"
+            android:text="SIGNUP"
             android:textSize="20sp" />
 
     </LinearLayout>

@@ -7,6 +7,25 @@ public class driver {
     String carcolour;
     String carnumber;
     String drivercontact;
+    String driveremail;
+
+    public String getDriveremail() {
+        return driveremail;
+    }
+
+    public void setDriveremail(String driveremail) {
+        this.driveremail = driveremail;
+    }
+
+    public String getDriverpass() {
+        return driverpass;
+    }
+
+    public void setDriverpass(String driverpass) {
+        this.driverpass = driverpass;
+    }
+
+    String driverpass;
     String image;
     float avgrating;
 
@@ -14,13 +33,15 @@ public class driver {
     public driver() {
     }
 
-    public driver(String driverid, String drivername, String carname, String carcolour, String carnumber, String drivercontact, String image) {
+    public driver(String driverid, String drivername, String carname, String carcolour, String carnumber, String drivercontact,String driveremail,String driverpass, String image) {
         this.driverid = driverid;
         this.drivername = drivername;
         this.carname = carname;
         this.carcolour = carcolour;
         this.carnumber = carnumber;
         this.drivercontact = drivercontact;
+        this.driveremail=driveremail;
+        this.driverpass=driverpass;
         this.image = image;
     }
 

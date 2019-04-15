@@ -32,7 +32,7 @@ import java.io.ByteArrayOutputStream;
 
 public class adddriver extends BaseActivity {
     private static int pick_image = 1;
-    EditText dname, dcontact, dcarnum, dcar, dcolour;
+    EditText dname, dcontact, dcarnum, dcar, dcolour,dpass,demail;
     Button add_driver;
     FirebaseAuth auth;
     FirebaseDatabase firebasedatabase;
@@ -71,6 +71,8 @@ public class adddriver extends BaseActivity {
                     dcarnum.setText(Driver.getCarnumber());
                     dcar.setText(Driver.getCarname());
                     dcolour.setText(Driver.getCarcolour());
+                    demail.setText(Driver.getDriveremail());
+                    dpass.setText(Driver.getDriverpass());
                     Glide.with(adddriver.this).load(Driver.getImage()).into(image);
 
 
@@ -90,13 +92,15 @@ public class adddriver extends BaseActivity {
                 String drivercarnum = dcarnum.getText().toString();
                 String drivercar = dcar.getText().toString();
                 String drivercarcolour = dcolour.getText().toString();
+                String driveremail=demail.getText().toString();
+                String driverpass=dpass.getText().toString();
                 key = driverId;
                 if (driverId == null) {
                     key = driverref.push().getKey();
 
                 }
                 imageref = firebaseStorage.getReference("driver images/" + key);
-                uploadimage(drivername, drivercontact, drivercarnum, drivercar, drivercarcolour);
+                uploadimage(drivername, drivercontact, drivercarnum, drivercar, drivercarcolour,driveremail,driverpass);
 
             }
         });
@@ -109,6 +113,8 @@ public class adddriver extends BaseActivity {
         dcolour = findViewById(R.id.driver_color);
         dcarnum = findViewById(R.id.driver_car);
         dcar = findViewById(R.id.driver_Carname);
+        demail=findViewById(R.id.driver_email);
+        dpass=findViewById(R.id.driver_pass);
         add_driver = findViewById(R.id.add_book_btn);
         image = findViewById(R.id.add_driver_image);
         firebaseStorage = FirebaseStorage.getInstance();
@@ -119,7 +125,7 @@ public class adddriver extends BaseActivity {
     }
 
 
-    private void uploadimage(final String drivername, final String drivercontact, final String drivercarnum, final String drivercar, final String drivercarcolour) {
+    private void uploadimage(final String drivername, final String drivercontact, final String drivercarnum, final String drivercar, final String drivercarcolour, final String driveremail, final String driverpass) {
         BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
 
@@ -169,7 +175,7 @@ public class adddriver extends BaseActivity {
                                     }
                                 });*/
 
-                            driver Driver = new driver(key,drivername,drivercar,drivercarcolour,drivercarnum,drivercontact,imageUrl);
+                            driver Driver = new driver(key,drivername,drivercar,drivercarcolour,drivercarnum,drivercontact,driveremail,driverpass,imageUrl);
                             driverref.child(key).setValue(Driver);
                            // driverref.child(driverId).child("avgrating").setValue(average_driver);
                           //  startActivity(new Intent(adddriver.this, driverlist.class));
