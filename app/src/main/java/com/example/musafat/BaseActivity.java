@@ -69,11 +69,11 @@ public class BaseActivity extends AppCompatActivity {
 
         setUpDrawer();
 
-      /*  transaction = fragmentManager.beginTransaction();
+        transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frag_container, new BlankFragment());
-        transaction.commit();*/
+        transaction.commit();
 
-//        navigationView.setCheckedItem(R.id.blankfrag);
+      navigationView.setCheckedItem(R.id.blankfrag);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

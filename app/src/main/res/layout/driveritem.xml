@@ -60,6 +60,8 @@
                 android:src="@drawable/menu"
                 android:layout_below="@id/driver_image"
                 android:layout_alignParentEnd="true"
+                android:clickable="false"
+                android:visibility="gone"
                 />
 
         </RelativeLayout>

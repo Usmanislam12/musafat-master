@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".adddriver"></activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".driverlist" />
         <activity android:name=".driverdetail" />
         <activity android:name=".Signup" />
         <activity android:name=".pickuplocation" />
@@ -40,7 +40,7 @@
         <activity android:name=".BaseActivity" />
         <activity android:name=".splash" />
         <activity
-            android:name=".driverlist"
+            android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

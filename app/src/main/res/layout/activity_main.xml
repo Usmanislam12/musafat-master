@@ -4,47 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
- android:gravity="center"
     android:background="@drawable/seriously"
+    android:gravity="center"
     android:orientation="vertical"
 
     tools:context=".MainActivity">
 
-<ImageView
-    android:layout_width="150dp"
-    android:layout_height="120dp"
-    android:layout_gravity="center"
-    android:layout_marginTop="30dp"
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
 
-    android:src="@drawable/logo"/>
+        android:src="@drawable/logo" />
 
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColorHint="@android:color/background_light">
 
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/main_email"
             android:layout_width="match_parent"
-            android:textColorHint="@android:color/background_light"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <EditText
-                android:id="@+id/main_email"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:hint="EMAIL"
-                android:textColorHint="@android:color/background_dark"
-                android:textColor="@android:color/background_light"
+            android:layout_height="60dp"
+            android:hint="EMAIL"
+            android:textColor="@android:color/background_light"
+            android:textColorHint="@android:color/background_dark"
 
 
-                />
-        </android.support.design.widget.TextInputLayout>
+            />
+    </android.support.design.widget.TextInputLayout>
 
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColorHint="@android:color/background_light"
-           app:passwordToggleEnabled="true">
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColorHint="@android:color/background_light"
+        app:passwordToggleEnabled="true">
+
         <EditText
 
             android:id="@+id/main_pass"
@@ -54,15 +54,15 @@
 
             android:inputType="textPassword"
             android:textColor="@android:color/background_light"
-            android:textColorHint="@android:color/background_dark"></EditText>
-        </android.support.design.widget.TextInputLayout>
+            android:textColorHint="@android:color/background_dark" />
+    </android.support.design.widget.TextInputLayout>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="70dp"
         android:text=" I agree with terms and conditions"
-        android:textColor="@android:color/background_light"/>
+        android:textColor="@android:color/background_light" />
 
     <Button
         android:id="@+id/main_logijn"
@@ -80,23 +80,25 @@
         android:fontFamily="@font/almendra_display"
         android:gravity="center"
         android:text="Or Login With"
-
         android:textColor="#D1A615"
         android:textSize="30dp" />
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:src="@drawable/gmaill"/>
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/gmaill"
+        android:onClick="signgoogle"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dont Have An Account?   SignUP"
-   android:fontFamily="@font/almendra_display"
-        android:textSize="30dp"
+        android:fontFamily="@font/almendra_display"
         android:onClick="signup"
-        android:textColor="#D1A615"/>
+        android:text="Dont Have An Account?   SignUP"
+        android:textColor="#D1A615"
+        android:textSize="30dp" />
 
-    </LinearLayout>
+</LinearLayout>
 
 

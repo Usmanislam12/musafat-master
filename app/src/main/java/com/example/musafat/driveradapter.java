@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,12 +30,22 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
     FirebaseDatabase database;
     DatabaseReference reference;
     DatabaseReference driverrefrence;
+    ImageView image;
+    FirebaseUser user;
+    FirebaseAuth auth;
+    DatabaseReference adminref;
+    String adminId;
+    String uid;
+
+
 
     public driveradapter(ArrayList<driver> drivers, Context context) {
 
         this.drivers = drivers;
         this.context = context;
+
     }
+
 
 
     @NonNull
@@ -52,6 +64,25 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
         final driver Driver = drivers.get(i);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("drivers");
+        auth=FirebaseAuth.getInstance();
+        uid=auth.getCurrentUser().getUid();
+        adminref=database.getReference().child("admin");
+        adminref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                adminId=dataSnapshot.child("uid").getValue(String.class);
+                if(uid.equals(adminId)){
+                    driverviewholder.imgmenu.setVisibility(View.VISIBLE);
+                    driverviewholder.imgmenu.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         driverrefrence = reference.child(Driver.getDriverid());
         if (driverrefrence != null) {
             driverrefrence.addValueEventListener(new ValueEventListener() {

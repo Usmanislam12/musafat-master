@@ -316,7 +316,7 @@ public class Signup extends AppCompatActivity {
     }
 
 
-    public void signgoogle(View view) {
+  /*  public void signgoogle(View view) {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -336,7 +336,7 @@ public class Signup extends AppCompatActivity {
 
 
     }
-
+*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == 123 && resultCode == RESULT_OK) {
@@ -346,36 +346,7 @@ public class Signup extends AppCompatActivity {
             image_uri = data.getData();
             username.setImageURI(image_uri);
         }
-        if (requestCode == LOGIN) {
 
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
-            if (task.isSuccessful()) {
-
-                final GoogleSignInAccount acc = task.getResult();
-                AuthCredential authCredential = GoogleAuthProvider.getCredential(acc.getIdToken(), null);
-                auth.signInWithCredential(authCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-
-                            FirebaseUser user=auth.getCurrentUser();
-
-                            String name = user.getDisplayName();
-                            String uid = user.getUid();
-                            String email = user.getEmail();
-                            String image = user.getPhotoUrl().toString();
-                            savdata(name, "", email, "", uid, image);
-                            Toast.makeText(Signup.this, "login "+uid , Toast.LENGTH_SHORT).show();
-                            // startActivity(new Intent(Signup.this,BaseActivity.class));
-                        } else
-                            Toast.makeText(Signup.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-            }
-        }
     }
 }
 
