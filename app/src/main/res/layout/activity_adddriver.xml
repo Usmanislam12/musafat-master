@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-
+android:textColor="@android:color/background_light"
                 android:hint="Name"
                 android:imeOptions="actionDone"
                 android:maxLines="1"
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-
+                android:textColor="@android:color/background_light"
                 android:hint="Email"
                 android:imeOptions="actionDone"
                 android:maxLines="1"
@@ -85,6 +85,24 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+            android:textColorHint="@android:color/background_light"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+
+                android:id="@+id/driver_conpass"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="CONFIRM PASSWORD"
+
+                android:inputType="textPassword"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="@android:color/background_dark" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textColorHint="@android:color/background_light">
 
             <EditText
@@ -93,6 +111,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
                 android:hint="Contact"
+                android:textColor="@android:color/background_light"
                 android:imeOptions="actionDone"
                 android:inputType="number"
                 android:maxLines="1"
@@ -109,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-
+                android:textColor="@android:color/background_light"
                 android:hint="CarName"
                 android:imeOptions="actionDone"
                 android:maxLines="1"
@@ -127,8 +146,9 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
                 android:hint="CarNumber"
+                android:textColor="@android:color/background_light"
                 android:imeOptions="actionDone"
-                android:inputType="number"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textSize="18sp" />
         </android.support.design.widget.TextInputLayout>
@@ -143,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="18dp"
-
+                android:textColor="@android:color/background_light"
                 android:hint="CarColor"
                 android:imeOptions="actionDone"
                 android:maxLines="1"

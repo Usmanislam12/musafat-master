@@ -7,16 +7,19 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,9 +33,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 
-public class adddriver extends BaseActivity {
+public class adddriver extends AppCompatActivity {
     private static int pick_image = 1;
-    EditText dname, dcontact, dcarnum, dcar, dcolour,dpass,demail;
+    EditText dname, dcontact, dcarnum, dcar, dcolour,dpass,demail,dconpass;
     Button add_driver;
     FirebaseAuth auth;
     FirebaseDatabase firebasedatabase;
@@ -46,13 +49,14 @@ public class adddriver extends BaseActivity {
     StorageReference imageref;
     String driverId;
     String key="";
-
+boolean chechk=false;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_adddriver);
+        setContentView(R.layout.activity_adddriver);
 
-        getLayoutInflater().inflate(R.layout.activity_adddriver,frameLayout);
+       // getLayoutInflater().inflate(R.layout.activity_adddriver,frameLayout);
 
         init();
         Bundle bundle = getIntent().getExtras();
@@ -73,6 +77,7 @@ public class adddriver extends BaseActivity {
                     dcolour.setText(Driver.getCarcolour());
                     demail.setText(Driver.getDriveremail());
                     dpass.setText(Driver.getDriverpass());
+                   // dconpass.setText(Driver.get);
                     Glide.with(adddriver.this).load(Driver.getImage()).into(image);
 
 
@@ -87,6 +92,7 @@ public class adddriver extends BaseActivity {
         add_driver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                chechk=true;
                 String drivername = dname.getText().toString();
                 String drivercontact = dcontact.getText().toString();
                 String drivercarnum = dcarnum.getText().toString();
@@ -94,17 +100,80 @@ public class adddriver extends BaseActivity {
                 String drivercarcolour = dcolour.getText().toString();
                 String driveremail=demail.getText().toString();
                 String driverpass=dpass.getText().toString();
+                String driverconpass=dconpass.getText().toString();
+
+                if (drivername==""){
+                    dname.setError("This Field is Compulsory");
+                    chechk=true;
+                }
+                if (driveremail==""){
+                    demail.setError("This Field Is Compulsory");
+                    chechk=true;
+                }
+                if (driverpass==""){
+                    dpass.setError("The Field Is Compulsory");
+                    chechk=true;
+                }
+                if (driverpass.length()<8){
+                    dpass.setError("Password is too Short");
+                    chechk=true;
+                }
+                if (driverconpass==""){
+                    dconpass.setError("The Field Is Compulsory");
+                    chechk=true;
+
+                }
+                if (!driverpass.equals(driverconpass)){
+                    dconpass.setError("Password donot Match");
+                    chechk=true;
+                }
+                if (!driveremail.matches(emailPattern)){
+                    demail.setError("Email is Invalid");
+                    chechk=true;
+                }
+                if (drivercar==""){
+                    dcar.setError("The Field is Compulsory");
+                    chechk=true;
+
+                }
+                if (drivercarnum==""){
+                    dcarnum.setError("The Field Is Compulsory");
+                    chechk=true;
+                }
+                if (drivercarcolour==""){
+                    dcolour.setError("The Field is Required");
+                    chechk=true;
+                }
+                if (drivercontact==""){
+                    dcontact.setError("The Field Is Required");
+                    chechk=true;
+                }
+
+                authuser(driveremail,driverpass,drivername,drivercontact,drivercarnum,drivercar,drivercarcolour);
                 key = driverId;
                 if (driverId == null) {
                     key = driverref.push().getKey();
 
                 }
-                imageref = firebaseStorage.getReference("driver images/" + key);
-                uploadimage(drivername, drivercontact, drivercarnum, drivercar, drivercarcolour,driveremail,driverpass);
+
 
             }
         });
 
+    }
+
+    private void authuser(final String driveremail1, final String driverpass, final String drivername, final String drivercontact, final String drivercarnum, final String drivercar, final String drivercolor) {
+        auth.createUserWithEmailAndPassword(driveremail1,driverpass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                imageref=firebaseStorage.getReference("driver images/"+auth.getCurrentUser().getUid());
+                Toast.makeText(adddriver.this,"driver added",Toast.LENGTH_SHORT).show();
+                imageref = firebaseStorage.getReference("driver images/" + key);
+
+                uploadimage(drivername, drivercontact, drivercarnum, drivercar, drivercolor,driveremail1,driverpass);
+
+            }
+        });
     }
 
     private void init() {

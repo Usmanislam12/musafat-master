@@ -14,6 +14,7 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     public void driver(View view) {
+
         startActivity(new Intent(this,driverlogin.class));
     }
 

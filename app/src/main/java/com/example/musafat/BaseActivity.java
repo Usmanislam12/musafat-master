@@ -73,7 +73,7 @@ public class BaseActivity extends AppCompatActivity {
         transaction.replace(R.id.frag_container, new BlankFragment());
         transaction.commit();
 
-      navigationView.setCheckedItem(R.id.blankfrag);
+        navigationView.setCheckedItem(R.id.blankfrag);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -99,7 +99,8 @@ public class BaseActivity extends AppCompatActivity {
                         builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                startActivity(new Intent(BaseActivity.this, MainActivity.class));
+                                auth.signOut();
+                                startActivity(new Intent(BaseActivity.this, Main2Activity.class));
                             }
 
                         }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -117,26 +118,29 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
 
-        datbasereference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        if (auth.getCurrentUser()!= null) {
+            datbasereference.child(auth.getCurrentUser().getUid());
+            datbasereference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                user user=dataSnapshot.getValue(user.class);
-                if (user!=null){
+                    user user = dataSnapshot.getValue(user.class);
+                    if (user != null) {
 
-                    username.setText(user.getUname());
-                    email.setText(user.getEmail());
-                    Glide.with(BaseActivity.this).load(user.getImage()).into(imageView);
+                        username.setText(user.getUname());
+                        email.setText(user.getEmail());
+                        Glide.with(BaseActivity.this).load(user.getImage()).into(imageView);
+                    }
+
                 }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
 
-            }
-        });
-
+        }
     }
 
 
@@ -178,8 +182,7 @@ public class BaseActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        datbasereference = database.getReference("user").child(auth.getCurrentUser().getUid());
-        Toast.makeText(this, "ini     " + auth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
+        datbasereference = database.getReference("user");
         storage = FirebaseStorage.getInstance();
 
     }
