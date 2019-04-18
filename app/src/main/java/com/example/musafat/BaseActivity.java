@@ -1,10 +1,19 @@
 package com.example.musafat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,7 +27,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +41,7 @@ import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements LocationListener {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
@@ -51,6 +59,12 @@ public class BaseActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference refrence;
     CircleImageView imageView;
+    LocationManager manager;
+    private int REQUEST_CODE = 1;
+    private int permission_code = 2;
+    FragmentTransaction mapTransaction;
+    public static double lat;
+    public static double lang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +86,19 @@ public class BaseActivity extends AppCompatActivity {
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frag_container, new BlankFragment());
         transaction.commit();
+
+
+        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            enableLocation();
+
+        } else {
+
+            getCurrentLocation();
+
+        }
+
 
         navigationView.setCheckedItem(R.id.blankfrag);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -118,8 +145,8 @@ public class BaseActivity extends AppCompatActivity {
             }
         });
 
-        if (auth.getCurrentUser()!= null) {
-            datbasereference.child(auth.getCurrentUser().getUid());
+        if (auth.getCurrentUser() != null) {
+            datbasereference = datbasereference.child(auth.getCurrentUser().getUid());
             datbasereference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -142,7 +169,76 @@ public class BaseActivity extends AppCompatActivity {
 
         }
     }
+/*
+    private void requestPermission() {
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(BaseActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, permission_code);
+            getCurrentLocation();
+
+        } else {
+
+        }
+
+    }*/
+
+    private void getCurrentLocation() {
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(BaseActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, permission_code);
+
+        } else {
+
+            Location location=manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+            onLocationChanged(location);
+
+
+        }
+
+
+    }
+
+    private void enableLocation() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Your Location seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        Intent locationIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivityForResult(locationIntent, REQUEST_CODE);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+
+        if (requestCode == REQUEST_CODE) {
+
+            if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                enableLocation();
+
+            } else {
+                getCurrentLocation();
+            }
+        }
+
+
+    }
 
     private void showFragment(Fragment fragment) {
 
@@ -199,5 +295,38 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onLocationChanged(Location location) {
+
+        double lat = location.getLatitude();
+        double lang = location.getLongitude();
+
+        Bundle bundle = new Bundle();
+        bundle.putDouble("lat", lat);
+        bundle.putDouble("lang", lang);
+
+
+        Map_Fragment map_fragment = new Map_Fragment();
+        map_fragment.setArguments(bundle);
+        mapTransaction = fragmentManager.beginTransaction();
+        mapTransaction.replace(R.id.frag_container, map_fragment);
+        mapTransaction.commit();
+
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
 }
 
