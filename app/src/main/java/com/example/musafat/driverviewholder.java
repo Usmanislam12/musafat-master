@@ -13,6 +13,8 @@ public class driverviewholder extends RecyclerView.ViewHolder {
     TextView views;
     ImageView imgmenu;
     TextView driver_carName;
+    ImageView callimage;
+
 
     public driverviewholder(@NonNull View itemView) {
         super(itemView);
@@ -22,6 +24,7 @@ public class driverviewholder extends RecyclerView.ViewHolder {
         views = itemView.findViewById(R.id.driver_views);
         imgmenu = itemView.findViewById(R.id.img_menu);
         driver_carName=itemView.findViewById(R.id.driver_carname);
+        callimage=itemView.findViewById(R.id.driver_call);
 
     }
 }

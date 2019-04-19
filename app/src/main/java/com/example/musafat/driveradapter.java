@@ -1,9 +1,13 @@
 package com.example.musafat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -36,7 +40,7 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
     DatabaseReference adminref;
     String adminId;
     String uid;
-
+    private int permission_code=1;
 
 
     public driveradapter(ArrayList<driver> drivers, Context context) {
@@ -45,7 +49,6 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
         this.context = context;
 
     }
-
 
 
     @NonNull
@@ -61,17 +64,18 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
 
     @Override
     public void onBindViewHolder(@NonNull final driverviewholder driverviewholder, final int i) {
+
         final driver Driver = drivers.get(i);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference().child("drivers");
-        auth=FirebaseAuth.getInstance();
-        uid=auth.getCurrentUser().getUid();
-        adminref=database.getReference().child("admin");
+        auth = FirebaseAuth.getInstance();
+        uid = auth.getCurrentUser().getUid();
+        adminref = database.getReference().child("admin");
         adminref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                adminId=dataSnapshot.child("uid").getValue(String.class);
-                if(uid.equals(adminId)){
+                adminId = dataSnapshot.child("uid").getValue(String.class);
+                if (uid.equals(adminId)) {
                     driverviewholder.imgmenu.setVisibility(View.VISIBLE);
                     driverviewholder.imgmenu.setEnabled(true);
                 }
@@ -82,6 +86,7 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
 
             }
         });
+
 
         driverrefrence = reference.child(Driver.getDriverid());
         if (driverrefrence != null) {
@@ -106,6 +111,7 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
 
                 }
             });
+
         }
         Glide.with(context).load(Driver.getImage()).into(driverviewholder.driverimage);
         driverviewholder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -118,51 +124,70 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
                 context.startActivity(intent);
             }
         });
-driverviewholder.imgmenu.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        popupmenu(driverviewholder.imgmenu,Driver.getDriverid(),i);
-    }
-});
+        driverviewholder.imgmenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupmenu(driverviewholder.imgmenu, Driver.getDriverid(), i);
+            }
+        });
+       /* driverviewholder.callimage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED )
+
+                    
+                    ActivityCompat.requestPermissions(context.get, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, permission_code);
+
+                }
+
+
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel:"+Driver.getDrivercontact()));
+                context.startActivity(intent);
+
+
+            }
+        });*/
+
     }
 
-    private void popupmenu(ImageView imgmenu ,final String Driverid,final int i) {
-        PopupMenu popupMenu=new PopupMenu(context,imgmenu);
-        MenuInflater menuInflater=popupMenu.getMenuInflater();
-menuInflater.inflate(R.menu.edit,popupMenu.getMenu());
+    private void popupmenu(ImageView imgmenu, final String Driverid, final int i) {
+        PopupMenu popupMenu = new PopupMenu(context, imgmenu);
+        MenuInflater menuInflater = popupMenu.getMenuInflater();
+        menuInflater.inflate(R.menu.edit, popupMenu.getMenu());
 
-popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.edit_menu:
-                update(Driverid);
-                break;
-            case  R.id.delete_menun:
-         delete(i);
-        }
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.edit_menu:
+                        update(Driverid);
+                        break;
+                    case R.id.delete_menun:
+                        delete(i);
+                }
 
-        return false;
-    }
-});
+                return false;
+            }
+        });
     }
 
     private void delete(int i) {
         driverrefrence.setValue(null);
-drivers.remove(i);
-notifyDataSetChanged();
+        drivers.remove(i);
+        notifyDataSetChanged();
 
     }
 
     private void update(String driverid) {
-Intent intent=new Intent(context,adddriver.class);
-Bundle bundle=new Bundle();
-bundle.putString("driverID",driverid);
-intent.putExtras(bundle);
-context.startActivity(intent);
+        Intent intent = new Intent(context, adddriver.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("driverID", driverid);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
 
     }
-
 
 
     @Override

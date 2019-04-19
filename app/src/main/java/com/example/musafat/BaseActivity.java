@@ -17,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -84,7 +85,7 @@ public class BaseActivity extends AppCompatActivity implements LocationListener 
         setUpDrawer();
 
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frag_container, new BlankFragment());
+        transaction.replace(R.id.frag_container, new Map_Fragment());
         transaction.commit();
 
 
@@ -130,7 +131,8 @@ public class BaseActivity extends AppCompatActivity implements LocationListener 
                                 startActivity(new Intent(BaseActivity.this, Main2Activity.class));
                             }
 
-                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
@@ -191,9 +193,8 @@ public class BaseActivity extends AppCompatActivity implements LocationListener 
 
         } else {
 
-            Location location=manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-            onLocationChanged(location);
+
 
 
         }

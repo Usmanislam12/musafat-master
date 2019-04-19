@@ -54,6 +54,16 @@
                 android:text="Views"
                 android:textSize="20sp" />
             <ImageView
+                android:id="@+id/driver_call"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/call"
+                android:layout_below="@id/driver_image"
+                android:layout_toRightOf="@id/driver_views"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                />
+            <ImageView
                 android:id="@+id/img_menu"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
