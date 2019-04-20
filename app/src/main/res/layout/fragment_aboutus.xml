@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    tools:context=".aboutus">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ABOUT US:"
+        android:layout_marginTop="50dp"
+        android:textSize="30dp"
+        android:layout_marginLeft="110dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/background_dark"
+        android:text="Musafat is an online shared pair transport service it is the concept to provide cheap and high standard transport services to the one who travel regulary from one place to another place.... This is very suitable for the working women who cant afford the prices of private transport regularly......"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:text="MADE BY: USMAN ALI  UMER KHAN"
+            android:textSize="30dp"/>
+    </LinearLayout>
+</FrameLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/seriously"
+    android:background="@drawable/gradient"
     android:gravity="center"
     android:orientation="vertical"
 
@@ -80,15 +80,15 @@
         android:fontFamily="@font/almendra_display"
         android:gravity="center"
         android:text="Or Login With"
-        android:textColor="#D1A615"
+        android:textColor="@android:color/background_dark"
         android:textSize="30dp" />
 
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/gmaill"
-        android:onClick="signgoogle"/>
+        android:layout_width="65dp"
+        android:layout_height="67dp"
+        android:onClick="signgoogle"
+        android:src="@drawable/gmaillll" />
 
     <TextView
         android:layout_width="match_parent"
@@ -96,7 +96,7 @@
         android:fontFamily="@font/almendra_display"
         android:onClick="signup"
         android:text="Dont Have An Account?   SignUP"
-        android:textColor="#D1A615"
+        android:textColor="@android:color/background_dark"
         android:textSize="30dp" />
 
 </LinearLayout>

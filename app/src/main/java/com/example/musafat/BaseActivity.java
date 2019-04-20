@@ -118,6 +118,9 @@ public class BaseActivity extends AppCompatActivity implements LocationListener 
                     case R.id.help:
                         showFragment(new help());
                         break;
+                    case R.id.aboutus:
+                        showFragment(new aboutus());
+                        break;
                     case R.id.logout:
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
