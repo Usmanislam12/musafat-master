@@ -40,7 +40,7 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
     DatabaseReference adminref;
     String adminId;
     String uid;
-    private int permission_code=1;
+    private int permission_code = 1;
 
 
     public driveradapter(ArrayList<driver> drivers, Context context) {
@@ -130,25 +130,35 @@ public class driveradapter extends RecyclerView.Adapter<driverviewholder> {
                 popupmenu(driverviewholder.imgmenu, Driver.getDriverid(), i);
             }
         });
-       /* driverviewholder.callimage.setOnClickListener(new View.OnClickListener() {
+      /*  driverviewholder.callimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED )
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
 
-                    
+
                     ActivityCompat.requestPermissions(context.get, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, permission_code);
 
-                }
-
-
-                    Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("tel:"+Driver.getDrivercontact()));
-                context.startActivity(intent);
-
-
             }
+
+            Intent intent = new Intent(Intent.ACTION_CALL);
+
+            Intent intent1 = new Intent(Intent.ACTION_CALL);
+                 intent1.setData(Uri.parse("tel:"+Driver.getDrivercontact());
+                context.startActivity(intent1);
+
+
         });*/
+
+      driverviewholder.callimage.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+
+              Intent intent =new Intent(Intent.ACTION_CALL);
+              intent.setData(Uri.parse("tel:"+Driver.getDrivercontact()));
+              context.startActivity(intent);
+          }
+      });
 
     }
 

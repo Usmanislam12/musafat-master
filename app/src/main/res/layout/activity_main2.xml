@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/seriously"
+    android:background="@android:color/background_light"
 
     tools:context=".Main2Activity">
     <ImageView
@@ -20,6 +20,7 @@
         android:layout_width="259dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:fontFamily="@font/artifika"
         android:layout_marginTop="40dp"
         android:onClick="user"
         android:background="@drawable/button"
@@ -29,7 +30,10 @@
         android:layout_height="wrap_content"
         android:text="OR"
         android:textSize="30dp"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="italic"
         android:layout_gravity="center"
+        android:fontFamily="@font/artifika"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="20dp"/>
     <Button
@@ -39,6 +43,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:onClick="driver"
+        android:fontFamily="@font/artifika"
         android:background="@drawable/button"
         android:text="LOGIN AS DRIVER" />
 

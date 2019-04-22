@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/seriously"
+  android:background="@android:color/background_light"
     android:orientation="vertical"
     tools:context=".Signup">
 
@@ -17,10 +17,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/aguafina_script"
+            android:fontFamily="@font/artifika"
             android:gravity="center"
-            android:text="BE A MUSAFATI"
-            android:textColor="#D1A615"
+            android:text="SIGN UP"
+            android:layout_marginTop="20dp"
+            android:textColor="#DAA520"
             android:textSize="40dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -38,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColorHint="@android:color/background_light">
+            android:textColorHint="@android:color/background_dark">
 
             <EditText
                 android:id="@+id/username"
@@ -47,8 +48,8 @@
                 android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz"
                 android:hint="USERNAME"
                 android:inputType="text"
-                android:textColor="@android:color/background_light"
-                android:textColorHint="@android:color/background_light"
+                android:textColor="@android:color/background_dark"
+                android:textColorHint="@android:color/background_dark"
 
 
                 />
@@ -59,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColorHint="@android:color/background_light"
+            android:textColorHint="@android:color/background_dark"
             app:passwordToggleEnabled="true">
 
             <EditText
@@ -69,7 +70,7 @@
                 android:layout_height="40dp"
                 android:hint="PASSWORD"
                 android:inputType="textPassword"
-                android:textColor="@android:color/background_light"
+                android:textColor="@android:color/background_dark"
                 android:textColorHint="@android:color/background_dark"></EditText>
         </android.support.design.widget.TextInputLayout>
 
@@ -78,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColorHint="@android:color/background_light"
+            android:textColorHint="@android:color/background_dark"
             app:passwordToggleEnabled="true">
 
             <EditText
@@ -87,7 +88,7 @@
                 android:layout_height="40dp"
                 android:hint="CONFIRM PASSWORD"
                 android:inputType="textPassword"
-                android:textColor="@android:color/background_light"
+                android:textColor="@android:color/background_dark"
                 android:textColorHint="@android:color/background_dark"></EditText>
         </android.support.design.widget.TextInputLayout>
 
@@ -96,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColorHint="@android:color/background_light">
+            android:textColorHint="@android:color/background_dark">
 
             <EditText
                 android:id="@+id/emaill"
@@ -104,7 +105,7 @@
                 android:layout_height="40dp"
                 android:hint="EMAIL"
                 android:inputType="textWebEmailAddress"
-                android:textColor="@android:color/background_light"
+                android:textColor="@android:color/background_dark"
                 android:textColorHint="@android:color/background_dark"></EditText>
         </android.support.design.widget.TextInputLayout>
 
@@ -113,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColorHint="@android:color/background_light">
+            android:textColorHint="@android:color/background_dark">
 
             <EditText
                 android:id="@+id/contactno"
@@ -121,7 +122,7 @@
                 android:layout_height="60dp"
                 android:hint="PHONE NO."
                 android:inputType="number"
-                android:textColor="@android:color/background_light"
+                android:textColor="@android:color/background_dark"
                 android:textColorHint="@android:color/background_dark"></EditText>
         </android.support.design.widget.TextInputLayout>
 
@@ -130,7 +131,7 @@
             android:layout_width="295dp"
             android:layout_height="wrap_content"
             android:text=" I agree with terms and conditions "
-            android:textColor="@android:color/background_light" />
+            android:textColor="@android:color/background_dark" />
 
         <Button
             android:id="@+id/signupbtn"
@@ -139,6 +140,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/button"
+            android:fontFamily="@font/artifika"
+            android:textStyle="italic"
 
             android:text="SIGNUP" />
 
