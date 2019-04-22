@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/seriously"
+    android:background="@android:color/background_light"
     android:orientation="vertical"
     tools:context=".freerides">
 
@@ -20,7 +20,8 @@
         android:layout_gravity="center"
         android:text="Get Your PKR 50 free Credits"
         android:textAlignment="center"
-        android:textColor="@android:color/background_light"
+        android:fontFamily="@font/artifika"
+        android:textColor="@android:color/background_dark"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -28,7 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
+        android:fontFamily="@font/artifika"
         android:text="#BEMUSAFAT get free credits on inviting your friends... "
         android:textAlignment="center" />
 
@@ -36,27 +38,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/artifika"
         android:text="YOUR INVITATION CODE"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
         android:textAlignment="center" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/artifika"
         android:text="MUsAfat0786"
         android:textAlignment="center"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
         android:textSize="20dp"
         android:textStyle="bold" />
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
-android:background="#22FAF3F6"
+        android:layout_marginLeft="80dp"
+android:background="@drawable/button"
         android:text="INVITE FRIENDS"
-
-        android:textColor="@android:color/background_light" />
+        android:fontFamily="@font/artifika"
+        android:textColor="@android:color/background_dark" />
 
 </LinearLayout>

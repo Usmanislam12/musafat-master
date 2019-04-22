@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/seriously"
+    android:background="@android:color/background_light"
     android:gravity="center"
     android:orientation="vertical"
 
@@ -23,14 +23,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:textColorHint="@android:color/background_light">
+        android:textColorHint="@android:color/background_dark">
 
         <EditText
             android:id="@+id/driver_email"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="EMAIL"
-            android:textColor="@android:color/background_light"
+            android:textColor="@android:color/background_dark"
             android:textColorHint="@android:color/background_dark"
 
 
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:textColorHint="@android:color/background_light"
+        android:textColorHint="@android:color/background_dark"
         app:passwordToggleEnabled="true">
 
         <EditText
@@ -53,7 +53,7 @@
             android:hint="PASSWORD"
 
             android:inputType="textPassword"
-            android:textColor="@android:color/background_light"
+            android:textColor="@android:color/background_dark"
             android:textColorHint="@android:color/background_dark" />
     </android.support.design.widget.TextInputLayout>
 
@@ -76,10 +76,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/almendra_display"
+        android:fontFamily="@font/artifika"
         android:layout_marginTop="40dp"
         android:onClick="signupdriver"
         android:text="Dont Have An Account?   SignUP"
-        android:textColor="#D1A615"
-        android:textSize="30dp" />
+        android:textColor="@android:color/background_dark"
+        android:textSize="23dp" />
 </LinearLayout>
