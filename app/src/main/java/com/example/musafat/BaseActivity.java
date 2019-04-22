@@ -17,7 +17,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.LoaderManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -51,7 +50,6 @@ public class BaseActivity extends AppCompatActivity implements LocationListener 
     FragmentManager fragmentManager;
     FragmentTransaction transaction;
     public static FrameLayout frameLayout;
-
     TextView username, email;
     FirebaseAuth auth;
     FirebaseUser currentUser;
@@ -118,9 +116,9 @@ public class BaseActivity extends AppCompatActivity implements LocationListener 
                     case R.id.help:
                         showFragment(new help());
                         break;
-                    case R.id.aboutus:
+                    /*case R.id.aboutus:
                         showFragment(new aboutus());
-                        break;
+                        break;*/
                     case R.id.logout:
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);

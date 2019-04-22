@@ -1,17 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/container"
     tools:context=".Map_Fragment">
 
 
     <fragment
         android:id="@+id/map_fragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/getLocations"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="12dp"
+        android:background="#fff">
+
+        <AutoCompleteTextView
+            android:id="@+id/pick_up_et"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Enter pickup Location"
+            android:layout_centerInParent="false"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:paddingStart="10dp" />
+
+        <AutoCompleteTextView
+            android:id="@+id/dropOff_et"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="Enter dropoff Location"
+            android:imeOptions="actionDone"
+            android:layout_below="@+id/pick_up_et"
+            android:inputType="text"
+            android:paddingStart="10dp" />
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/confirm_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="12dp"
+        android:text="Confirm"
+        android:textSize="15sp"
+        android:layout_alignParentBottom="true"/>
+
 
 
 </RelativeLayout>
